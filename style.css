@@ -213,7 +213,7 @@ FeedbackPage
 .feedback-button {
     position: fixed; /* Fixes the button in place */
     bottom: 20px; /* Distance from the bottom */
-    left: 20px; /* Distance from the left */
+    left: 30px; /* Distance from the left */
     padding: 10px 15px; /* Add some padding */
     border-radius: 10px; /* Rounded corners */
     background-color: #f39c12; /* Button color */
