@@ -45,7 +45,41 @@
         </div>
         <div class="gameProgress">
             <div id="warningMessage" class="hidden">Only 1 life remaining!</div>
+
+            <div id="liveScore">LIVE SCORE: <span id="score">0</span></div>
+            <button id="pauseResumeButton">Pause</button>
+            <button id="pauseResumeButton">Restart</button>
+            <div id="liveLife">LIVE LIFE: <span id="lives">3</span></div>
+        </div>
+        <div id="nextLevelMessage" class="hidden"></div>
+
+        <div id="gameControls">
+            <div class="controlGroup">
+                <label for="levelSelect" id="difficulty">Select Difficulty:</label>
+                <select id="levelSelect">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+
+            <div class="controlGroup">
+                <span id="displayName" class="playerName"></span>
+            </div>
+
+            <div class="controlGroup">
+                <button id="startButton"><i class="fas fa-play"></i> Start Game</button>
+                <button id="pauseButton" style="display: none;"><i class="fas fa-pause"></i> Game Paused</button>
+                <button id="restartButton" style="display: none;"><i class="fas fa-redo"></i> Play Again</button>
+                <div id="faqbtn">
+                    <a href="FAQs.html">
+                        <button class="faq-btn">FAQs</button>
+                    </a>
+                </div>
+            </div>
+
             <!-- <div id="liveScore">LIVE SCORE: <span id="score">0</span></div> -->
+
         </div>
     </div>
     
@@ -135,9 +169,15 @@
             <span id="speedBoostTimer"></span>  
             <span id="shieldTimer"></span>  
 
+
+        </div>
+        
+         <div id="instructions">
+
         </div>
         
         <div id="instructions">
+
             <div>
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="checkbox">
@@ -152,12 +192,28 @@
                             <i class="fas fa-volume-up"></i> 
                             <p id="musicVolumeText">Music Volume</p>
                         </button>
-                        
+
+
+            <div id="instructions">
+                <div>
+                    <div class="theme-switch-wrapper">
+                        <label class="theme-switch" for="checkbox">
+                            <input type="checkbox" id="checkbox">
+                            <div class="slider"></div>
+                        </label>
+                        <span id="mode-label">Light Mode</span>
+                    </div> 
+                    <div id="volumeControl">
+                        <div id="muteControl">
+                            <button id="muteButton" class="styled-button">
+                                <i class="fas fa-volume-up"></i> Music Volume
+                            </button>
+                        </div>
+                        <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+
                     </div>
                     <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
                 </div>
-                
-                
             </div>
             
             <h2 class="primary-btn" id="instructionsTitle">Player Instructions</h2>
@@ -175,8 +231,11 @@
                 <p><i class="fas fa-shield-alt"></i><a href="./rules.html">explore more</a></p>
             </div>
         </div>
-    </div>
 
+    </div>
+    <div id="gameOver">
+        <i class="fas fa-exclamation-circle"></i> Game Over<br /><span id="finalScore"></span>
+    </div>
     <div id="highScore">
         High Score: <span id="highScoreValue"></span>
     </div>
@@ -245,6 +304,16 @@
                 backgroundMusic.muted = true;
                 muteButton.innerHTML = '<i class="fas fa-volume-up"></i> Unmute';
             }
+
+            // Add event listener for the restart button
+            document.getElementById("restartButton").addEventListener("click", () => {
+                // Call the restartGame function (assuming it's defined in Alien.js)
+                if (typeof restartGame === "function") {
+                    restartGame();
+                } else {
+                    console.error("restartGame function is not defined");
+                }
+            });
         });
       </script>
 
